@@ -1,41 +1,20 @@
-//objeto relativo a una remera, 
-//se creara una class x cada color
-//y class de imagenes
-
-class remerasNegras {
+class remera {
     constructor(tamano, cantidad, precio, stock){
         this.tamano = tamano;
-        this.cantidad = cantidad;
-        this.precio = precio;
-        this.stock = stock;
+        this.cantidad = parseInt(cantidad);
+        this.precio = parseFloat(precio);
     }
-
-    getTamano(){
-        console.log(this.tamano);
-    };
-
-    getCantidad(){
-        console.log(this.cantidad)
-    };
-    getPrecio(){
-        console.log(this.precio)
-    };
-
-    getStock() {
-        console.log(this.stock - this.cantidad);
+    sumarIva(){
+        this.precio = this.precio*1.22
     }
-};
-
-const solicitar = () => {
-    let tamano = prompt("Ingrese el tamaño de la remera");
-    let cantidad = prompt("Ingrese la cantidad");
-    let precio = prompt("Ingrese el precio por unidad");
-    let producto = new remerasNegras(tamano, cantidad, precio, 50);
-    
-    producto.getTamano();
-    producto.getCantidad();
-    producto.getPrecio();
-    producto.getStock();
 }
 
-solicitar()
+const productos = [];
+const agregarRemera = (remeras) => { 
+    productos.push(new remera(prompt("Ingrese el tamaño de la remera"), prompt("Ingrese la cantidad"), prompt("Ingrese el precio por unidad")));
+
+    for (const remera of productos)
+    remera.sumarIva();
+}
+agregarRemera(remera);
+console.log(productos);
